@@ -15,8 +15,8 @@ def imprimir_matriz(matriz):
         
         if (i + 1) % 3 == 0 and i != 8:
             print('-' * 21)
+
 def es_valido(tablero, fila, col, num):
-    """Verifica si un número puede ser colocado en la posición dada sin violar las reglas del Sudoku."""
     if num in tablero[fila, :] or num in tablero[:, col]:
         return False
     
@@ -37,5 +37,22 @@ def llenar_tablero_aleatorio(tablero):
             intentos += 1
     return tablero
 
-llenar_tablero_aleatorio(matriz)
-imprimir_matriz(matriz)
+def sudoku_interactivo(tablero):
+    while True:
+        imprimir_matriz(matriz)
+        print("\nIngrese 'salir' en cualquier momento para finalizar.")
+        
+        entrada = input("Ingrese la fila (1-9), columna (1-9) y número (1-9) separados por espacios (ejemplo: '1 2 5'): ")
+        if entrada.lower() == 'salir':
+            print("Juego terminado.")
+            break
+        
+        
+
+
+
+if __name__ == "__main__":
+    llenar_tablero_aleatorio(matriz)
+
+    print("Tablero de Sudoku generado para jugar:")
+    sudoku_interactivo(matriz)
